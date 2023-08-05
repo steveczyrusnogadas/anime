@@ -18,7 +18,7 @@ const AnimeDetails = ({ anime }) => (
     </div>
     <div>
       <a href={anime.url} target="_blank" rel="noopener noreferrer">
-        <h1 className="text-4xl font-bold text-center pb-5 md:pt-5">
+        <h1 className="text-4xl font-bold text-center pb-5 xs:pt-5">
           {anime.title} ({anime.type})
         </h1>
       </a>
