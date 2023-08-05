@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# Start Here
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the React Developer interview. This coding exercise should take you no more than 4 hours, but you have 24 hours to complete from the moment you fork.
 
-## Available Scripts
+You'll be building a functional feature that gives users the ability to add fruits to their shopping cart. Your feature should fulfill the following requirements while ensuring production-ready code quality:
 
-In the project directory, you can run:
+1. Query for the list of anime
+2. The input should be a typeahead that renders anime names. When typing into the typeahead, the search results are fetched and displayed. There is NO "Submit" or "Search" button. Data should be fetched on input change.
+3. Upon clicking on an anime, we should be directed to a page dedicated to that anime.
+4. Feel free to make use a design of your choosing, but I expect a nice UI and UX when executing the search
 
-### `npm start`
+The above requirements are the bare minimum. Below are some extra bonus points to consider, and elements I'll be looking out for as I review your code:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Make intuitive UI considerations, add comments if necessary to explain your decision thought process.
+2. Make sure to implement performant code. In a real world scenario, consider how your implementation could be optimized.
+3. Accessibility
+4. General best practices around component structuring
+5. You're allowed to use libraries for more complicated functionality, but bonus points if you implement everything yourself
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# API Url
 
-### `npm test`
+https://api.jikan.moe/v4/anime?q=
+https://api.jikan.moe/v4/anime/{id}/full
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+API Documentation:
+https://docs.api.jikan.moe/#tag/anime/operation/getAnimeSearch
+https://docs.api.jikan.moe/#tag/anime/operation/getAnimeFullById
 
-### `npm run build`
+# Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. FORK this codesandbox, you may need to create an account on codesandbox.io.
+2. You have 24 hours to complete the exercise and send your new codesandbox url back to me. Submissions past the 24 hour period will not be considered.
