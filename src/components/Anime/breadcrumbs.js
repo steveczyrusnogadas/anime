@@ -1,67 +1,18 @@
-import React, { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react';
+import React, { useState, useLayoutEffect, useRef, useCallback } from 'react';
 import BreadcrumbItem from './breadcrumbItem';
+import useDetectOverflowX from './overflowX';
 
 const Breadcrumbs = ({ items, children }) => {
-  const [widths, setWidths] = useState([]);
-  const [collapsed, setCollapsed] = useState(false);
-  const containerRef = useRef(null);
-
   const childrenArray = React.Children.toArray(children);
   const itemsCount = items ? items.length : childrenArray.length;
-
-  const updateWidth = (index, width) => {
-    setWidths((currentWidths) => {
-      console.log('currentWidths', { currentWidths });
-      const newWidths = [...currentWidths];
-      console.log('newWidths', { newWidths });
-
-      newWidths[index] = width;
-      console.log('newWidths2', { newWidths });
-      return newWidths;
-    });
-  };
-
-  const checkOverflow = useCallback(() => {
-    console.log('widths1', { widths })
-    const totalWidth = widths.reduce((acc, width) => acc + width, 0);
-    console.log('widths2', { widths })
-
-    if (containerRef.current) {
-      setCollapsed(totalWidth > containerRef.current.clientWidth);
-      console.log('widths3', { widths })
-    }
-  }, [widths]);
-
-  useLayoutEffect(() => {
-    console.log('counts', { itemsCount });
-    setWidths(new Array(itemsCount).fill(0));
-  }, [itemsCount]);
-
-  useLayoutEffect(() => {
-    const resizeObserver = new ResizeObserver(() => {
-    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
-
-      checkOverflow();
-    });
-
-    if (containerRef.current) {
-    console.log('WWWWWWWWWWWWWWWWWWWWWWWW');
-
-      resizeObserver.observe(containerRef.current);
-    }
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, [checkOverflow, itemsCount]);
+  const { collapsed, containerRef, onWidthChange } = useDetectOverflowX({
+    itemsCount,
+  });
 
   const renderBreadcrumbItems = () => {
     if (items) {
       return items.map((item, index) => (
-        <BreadcrumbItem
-          key={index}
-          onWidthChange={(width) => updateWidth(index, width)}
-        >
+        <BreadcrumbItem key={index} onWidthChange={onWidthChange(index)}>
           {item}
         </BreadcrumbItem>
       ));
@@ -71,7 +22,7 @@ const Breadcrumbs = ({ items, children }) => {
       React.isValidElement(child)
         ? React.cloneElement(child, {
             key: index,
-            onWidthChange: (width) => updateWidth(index, width),
+            onWidthChange: onWidthChange(index),
           })
         : child,
     );

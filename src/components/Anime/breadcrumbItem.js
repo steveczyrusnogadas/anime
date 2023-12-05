@@ -1,24 +1,22 @@
-import React, { useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 
-const BreadcrumbItem = ({ children, onWidthChange, isLastIndex = false  }) => {
+const BreadcrumbItem = memo(
+  ({ children, onWidthChange, isLastIndex = false }) => {
     const ref = useRef(null);
 
     useEffect(() => {
-      const updateWidth = () => {
-        if (ref.current) {
-          onWidthChange(ref.current.offsetWidth);
-        }
-      };
-  
-      updateWidth();
-      window.addEventListener('resize', updateWidth);
-  
-      return () => {
-        window.removeEventListener('resize', updateWidth);
-      };
+      if (ref.current && onWidthChange) {
+        onWidthChange(ref.current.offsetWidth);
+      }
     }, [onWidthChange]);
-  
-    return <span ref={ref}>{children}{!isLastIndex ? ' / ': ''}</span>;
-};
+
+    return (
+      <span ref={ref}>
+        {children}
+        {!isLastIndex ? ' / ' : ''}
+      </span>
+    );
+  },
+);
 
 export default BreadcrumbItem;
